@@ -10,4 +10,6 @@ interface ProductInterface
 
     public function create($data);
 
+    public function update($data, $id);
+
 }

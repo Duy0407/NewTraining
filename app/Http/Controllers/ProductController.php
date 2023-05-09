@@ -7,6 +7,8 @@ use App\Services\CategoryService;
 use App\Services\FacturerService;
 use App\Services\ProductService;
 
+use App\Http\Requests\UpdateProductRequest;
+
 class ProductController extends Controller
 {
     /**
@@ -81,7 +83,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = $this->cateService->getAllCategory();
+        $facturers = $this->facturerServices->getAllFacturer();
+        $edit = $this->productService->findProduct($id);
+        return view("update_product", compact('categories','facturers', 'edit'));
     }
 
     /**
@@ -91,9 +96,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        //
+        $this->productService->updateProduct($request->all(), $id);
+        return redirect()->route('product.index')->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
 
     /**

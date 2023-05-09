@@ -40,5 +40,10 @@ class ProductRepositories implements ProductInterface
         return Product::create($data);
     }
 
+    public function update($data, $id)
+    {
+        return $this->productModel->where('id', $id)->update($data);
+    }
+
 }
 ?>

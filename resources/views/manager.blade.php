@@ -35,7 +35,7 @@
                                 </a>
 
                                 <div class="item_info-function">
-                                    <a href="" class="">
+                                    <a href="{{ route('product.edit', $product->id) }}" class="">
                                         <div class="function-update function_chung">Update</div>
                                     </a>
                                     <div class="function-delete function_chung" onclick="popupDelete(this)">Delete</div>

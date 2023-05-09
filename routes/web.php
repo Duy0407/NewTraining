@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,7 @@ use App\Http\Controllers\WelcomeController;
 */
 
 Route::resource('/', WelcomeController::class);
+
+Route::group(['prefix' => 'admin', 'name' => 'admin'], function(){
+    Route::resource('product', ProductController::class);
+});

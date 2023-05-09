@@ -10,7 +10,7 @@
         </div>
 
         <div class="popup_add-content">
-            <form action="" method="POST" id="formProduct" onsubmit="return validateForm()" enctype="multipart/form-data">
+            <form action="{{route('product.store')}}" method="POST" id="formProduct" onsubmit="return validateForm()" enctype="multipart/form-data">
                 @csrf
                 <div class="form_import">
                     <div class="form_import-lable">Tên sản phẩm<span class="color_red">*</span></div>

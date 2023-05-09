@@ -36,7 +36,7 @@
                         </div>
                         <div class="navbar_direc-sub displayProduct">
                             <div class="navbar_direc-a pd_chung">
-                                <a href="" class="color_loc color_filter">All</a>
+                                <a href="{{route('product.index')}}" class="color_loc color_filter">All</a>
                             </div>
                             @foreach($categories as $category)
                                 <div class="navbar_direc-a pd_chung color_filter" data-id="{{$category->id}}">

@@ -25,12 +25,17 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $keyword = $request->get('search');
+
+        $categoryId = intval($request['category']);
+        
+        $manufacturerId = $request['manufacturer'];
 
         $categories = $this->cateService->getAllCategory();
         $facturers = $this->facturerServices->getAllFacturer();
-        $products = $this->productService->getAllProduct();
+        $products = $this->productService->getAllProduct($keyword, $categoryId, $manufacturerId);
 
         return view('manager', compact('categories','facturers','products'));
     }

@@ -40,7 +40,7 @@
                             </div>
                             @foreach($categories as $category)
                                 <div class="navbar_direc-a pd_chung color_filter" data-id="{{$category->id}}">
-                                    <a href="" class="aCategory">{{$category->category_name}}</a>
+                                    <a href="{{route('product.index', ['category' => $category->id])}}" class="aCategory">{{$category->category_name}}</a>
                                 </div>
                             @endforeach
                         </div>
@@ -56,11 +56,12 @@
                             </div>
                             @foreach($facturers as $facturer)
                                 <div class="navbar_direc-a pd_chung color_filter" data-id="{{$facturer->id}}">
-                                    <a href="" class="aManufacturer">{{$facturer->manufacturer_name}}</a>
+                                    <a href="{{route('product.index', ['manufacturer' => $facturer->id])}}" class="aManufacturer">{{$facturer->manufacturer_name}}</a>
                                 </div>
                             @endforeach
                         </div>
                     </div>
+                    <div class="filter" hidden data-filter="{{route('product.index')}}"></div>
                 </div>
                 <!-- End Navbar -->
 

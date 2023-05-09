@@ -14,9 +14,20 @@ class ProductRepositories implements ProductInterface
 
     }
 
-    public function getAll()
+    public function getAll($search, $categoryId, $manufacturerId)
     {   
-        return $this->productModel->orderByDesc('updated_at')->paginate(12);
+        $product = $this->productModel;
+        if ($search) {
+            $product = $product->where('name', 'like', '%'.$search.'%');
+        }
+        if ($categoryId) {
+            $product = $product->where('id_category', $categoryId);
+        }
+        if ($manufacturerId) {
+            $product = $product->where('id_manufacturer', $manufacturerId);
+        }
+
+        return $product->orderByDesc('updated_at')->paginate(12);
     }
 
     public function find($id)

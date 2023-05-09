@@ -12,9 +12,9 @@ class ProductService
     }
 
     // Lấy tất cả sản phẩm
-    public function getAllProduct()
+    public function getAllProduct($search, $categoryId, $manufacturerId)
     {
-        return $this->productRepository->getAll();
+        return $this->productRepository->getAll($search, $categoryId, $manufacturerId);
     }
 
     // Thêm sản phẩm

@@ -65,9 +65,9 @@
                 </div>
 
                 <div class="form_image">
-                    <div class="form_image-click click_image">Thêm ảnh minh họa<span class="color_red">*</span><span class="name_img"></span></div>
+                    <div class="form_image-click click_image">Thêm ảnh minh họa<span class="color_red">*</span></div>
+                    <span class="name_img"></span>
                     <input type="file" class="chon_anh" name="fileInput" id="fileInput" hidden>
-
                 </div>
 
                 <div class="form_btn">

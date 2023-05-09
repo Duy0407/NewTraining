@@ -23,6 +23,16 @@
                     <div class="header_logo-icon"><img src="assets/image/logo.svg" alt=""></div>
                     <h1 class="header_logo-text">NCC</h1>
                 </a>
+                <div class="header_direc">
+                    <!-- <a href="{{route('login')}}" class="">Đăng Nhập</a>
+                    <a href="{{route('register')}}" class="">Đăng Ký</a> -->
+                    <form action="{{route('logout')}}" method="" style="display: none;" id="logout-form">
+                        @csrf
+                    </form>
+                    @if (Auth::check())
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a>
+                    @endif
+                </div>
             </header>
             <!-- END HEADER -->
 

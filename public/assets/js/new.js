@@ -7,12 +7,6 @@ $(document).ready(function(){
         var email = $("input[name=email]").val();
         var password = $("input[name=password]").val();
 
-        // var formData = new FormData();
-        // formData.append('name', name);
-        // formData.append('email', email);
-        // formData.append('password', password);
-        // console.log(name);
-
         $.ajax({
             url: 'api/register',
             type: 'POST',
@@ -27,7 +21,11 @@ $(document).ready(function(){
             },
 
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.responseText);
+                // var errors = JSON.parse(jqXHR.responseText).errors;
+                // var message = Object.values(errors.key).join('');
+                // $('.validate_error').html(message);
+
+                // console.clear();
             }
         });
     })

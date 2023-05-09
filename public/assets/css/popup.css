@@ -4,7 +4,14 @@
 .popup_add-head{padding:17px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #F5F5F5}
 .popup_add-head-text{text-transform:uppercase;font-weight:400}
 .popup_add-head-icon{cursor:pointer}
-.popup_add-content{padding:23px 37px 37px}
+.popup_add-content {
+    padding: 23px 37px 37px;
+    height: 697px;
+    overflow: scroll;
+}
+.popup_add-content::-webkit-scrollbar { 
+    display: none; 
+}
 .form_import{position:relative;margin-bottom:28px}
 .validate_error{position:absolute;color:red;font-size:13px;bottom:-20px;left:0}
 .form_import-lable{margin-bottom:4px}
@@ -14,7 +21,15 @@
 .form_import-select .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:40px;font-size:14px;padding-left:20px}
 .form_import-select .select2-container--default .select2-selection--single .select2-selection__arrow{height:40px}
 .from_import-textarea{width:100%;border:1px solid #BCBEC6;border-radius:6px;height:95px;padding: 10px 12px;}
-.form_image-click{color:#6ECB63;cursor:pointer}
+.form_image-click {
+    width: fit-content;
+    color: #FFF;
+    background: #CCC;
+    cursor: pointer;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 10px;
+}
 .form_image{margin-bottom:32px}
 .btn_chung{width:164px;height:44px;border-radius:40px;font-size:14px;margin:0 10px;cursor:pointer}
 .form_btn{display:flex;justify-content:center}

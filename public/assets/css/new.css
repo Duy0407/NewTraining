@@ -77,9 +77,6 @@ body {
   outline: 0;
   transition: .2s;
 }
-.fig{
-  margin-top: 20px;
-}
 
 .form-field:focus {
   border-color: #0f7ef1;

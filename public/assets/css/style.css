@@ -15,7 +15,7 @@ a{color: #000;text-decoration: none;}
 .lh_24{line-height: 24px;}
 .mb_5{margin-bottom: 5px;}
 .mb_10{margin-bottom: 10px;}
-.color_red{color: #FF4D4D;}
+.color_red{color: #FF4D4D; margin-left: 4px;}
 .mb_16{margin-bottom: 16px;}
 #background{background: #F5F5F5;}
 #App{width: 1440px;margin: 0 auto;}

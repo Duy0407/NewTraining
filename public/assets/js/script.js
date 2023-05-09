@@ -240,6 +240,11 @@ window.addEventListener('load', hideProgressBar);
 
 
 
+// Hủy update 
+$('.btn_huy').click(function(){
+    window.location.href = "admin/product";
+})
+
 
 
 

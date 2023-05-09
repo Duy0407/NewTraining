@@ -125,5 +125,31 @@ class ProductService
         }
     }
 
+    // Xóa sản phẩm
+    public function deleteProduct($id){
+        $product = $this->productRepository->find($id);
+
+        $folderPath = 'uploads/products/'.$product->id;
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+        $files = scandir($folderPath);
+        foreach ($files as $file) {
+            $fileExtension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (in_array($fileExtension, $allowedExtensions)) {
+                unlink($folderPath . '/' . $file);
+            }
+        }
+
+        if (is_dir($folderPath)) {
+            rmdir($folderPath);
+        }
+
+        return $this->productRepository->delete($id);
+    }
+
+    public function getProductSuggestion($productID, $id_category){
+        return $this->productRepository->productSuggestion($productID, $id_category);
+    }
+
 }
 ?>

@@ -48,6 +48,19 @@ class ProductRepositories implements ProductInterface
         return $this->productModel->where('id', $id)->update($data);
     }
 
+    public function delete($id)
+    {
+        $productDelete = Product::destroy($id);
+        $imgSliderDelete = ImgSliderProduct::where('id_product',$id)->delete($id);
+        if ($productDelete && $imgSliderDelete)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
     // Thêm ảnh slide
     public function addImgSliderProduct($data_img)
     {

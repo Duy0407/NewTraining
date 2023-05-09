@@ -35,6 +35,7 @@
                                 </a>
 
                                 <div class="item_info-function">
+                                    <div class="dataDestroyProduct" data-link="{{route('product.destroy', $product->id)}}" hidden=""></div>
                                     <a href="{{ route('product.edit', $product->id) }}" class="">
                                         <div class="function-update function_chung">Update</div>
                                     </a>

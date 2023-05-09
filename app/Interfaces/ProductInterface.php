@@ -12,6 +12,7 @@ interface ProductInterface
 
     public function update($data, $id);
 
+    public function delete($id);
 
     // Thêm ảnh slide
     public function addImgSliderProduct($data);

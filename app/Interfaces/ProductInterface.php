@@ -14,6 +14,9 @@ interface ProductInterface
 
     public function delete($id);
 
+    // Sản phẩm gợi ý
+    public function productSuggestion($productID, $id_category);
+
     // Thêm ảnh slide
     public function addImgSliderProduct($data);
     

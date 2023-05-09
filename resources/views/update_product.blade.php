@@ -91,7 +91,21 @@
                         <div class="slide-title">Ảnh slide</div>
                         <div class="slide-image">
                             
-
+                            @foreach($imgSliderProducts as $imgSlider)
+                                <div class="slide-item box1Img">
+                                    <div class="slide-item-title">Ảnh 1</div>
+                                    <div class="slide-item-img">
+                                        <input type="text" hidden name="idImgSlider[]" value="{{$imgSlider->id}}" id="idImage">
+                                        <img src="uploads/products/{{$imgSlider->id_product .'/'. $imgSlider->image_slider}}" alt="" class="imgElement">
+                                        <div class="update_delete">
+                                            <div class="btn_update_delete" onclick="image_upload(this)">Cập nhật</div>
+                                            <div class="btn_update_delete ghiDe" onclick="image_delete(this)">Xóa</div>
+                                        </div>
+                                        <input type="text" name="idImageDelete[]" hidden value="" id="getIdImage">
+                                        <input type="file" class="inputElement" hidden name="imageSlide[]">
+                                    </div>
+                                </div>
+                            @endforeach
 
                             <div class="slide-item box2Add">
                                 <div class="slide-item-title">Ảnh 1</div>

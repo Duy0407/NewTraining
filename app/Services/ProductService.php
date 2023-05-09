@@ -45,12 +45,19 @@ class ProductService
         return $this->productRepository->find($id);
     }
 
+    // Lấy tất cả anh slide trong update
+    public function GetAllImgSliderProduct($productID)
+    {
+        return $this->productRepository->getAllImgSlider($productID);
+    }
+
 
     public function updateProduct($r, $id){
         $product = $this->productRepository->find($id);
         $productID = $product->id;
 
         if ($product){
+            
 
             $time = time();
             $data['name'] = $r['update_name'];
@@ -71,6 +78,48 @@ class ProductService
                 $data['images'] = $fileName;
             }
 
+            if (isset($r['imageSlide'])) {
+
+                $arrayId = $r['idImgSlider'];
+
+                foreach ($r['imageSlide'] as $key => $fileSlider){
+                    $idImage = $arrayId[$key];
+                    $fileNameSlider = rand(0,999) . '.' . $fileSlider->getClientOriginalExtension();
+                    $fileSlider->move(public_path('uploads/products/' . $productID), $fileNameSlider);
+
+                    $data_img['image_slider'] = $fileNameSlider;
+                    $data_img['updated_at'] = $time;
+
+                    if (isset($idImage)) {
+                        $imgSlider = $this->productRepository->getOneImgSlider($idImage);
+                        $path_unlinkSlider = 'uploads/products/' . $productID . '/' . $imgSlider->image_slider;
+                        if (file_exists($path_unlinkSlider)) {
+                            unlink($path_unlinkSlider);
+                        }
+                        $this->productRepository->updateImgSlider($data_img, $idImage);
+                    }else{
+                        $data_img['id_product'] = $productID;
+                        $data_img['created_at'] = $time;
+                        $this->productRepository->addImgSliderProduct($data_img);
+                    }
+
+                }
+            }
+
+            // Xóa ảnh slide
+            if (isset($r['idImageDelete'])) {
+                $arrayImgSliderDelete = array_filter($r['idImageDelete']);
+                if (!empty($arrayImgSliderDelete)) {
+                    foreach ($arrayImgSliderDelete as $idImgSlider) {
+                        $imgSlider = $this->productRepository->getOneImgSlider($idImgSlider);
+                        $path_unlinkSlider = 'uploads/products/' . $productID . '/' . $imgSlider->image_slider;
+                        if (file_exists($path_unlinkSlider)) {
+                            unlink($path_unlinkSlider);
+                        }
+                        return $this->productRepository->deleteOneImgSlider($idImgSlider);
+                    }
+                }
+            }
 
             return $this->productRepository->update($data, $id);
         }

@@ -86,7 +86,8 @@ class ProductController extends Controller
         $categories = $this->cateService->getAllCategory();
         $facturers = $this->facturerServices->getAllFacturer();
         $edit = $this->productService->findProduct($id);
-        return view("update_product", compact('categories','facturers', 'edit'));
+        $imgSliderProducts = $this->productService->GetAllImgSliderProduct($id);
+        return view("update_product", compact('categories','facturers', 'edit', 'imgSliderProducts'));
     }
 
     /**

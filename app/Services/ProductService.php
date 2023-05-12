@@ -1,12 +1,12 @@
 <?php
 namespace App\Services;
-use App\Repositories\ProductRepositories;
+use App\Interfaces\ProductInterface;
 
 class ProductService
 {
     protected $productRepository;
 
-    public function __construct(ProductRepositories $productRepository)
+    public function __construct(ProductInterface $productRepository)
     {
         $this->productRepository = $productRepository;
     }

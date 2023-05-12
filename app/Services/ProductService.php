@@ -12,6 +12,7 @@ class ProductService
     }
 
     // Lấy tất cả sản phẩm
+
     public function getAllProduct($search, $categoryId, $manufacturerId)
     {
         return $this->productRepository->getAll($search, $categoryId, $manufacturerId);
@@ -28,16 +29,12 @@ class ProductService
         $data['description'] = $r['description'];
         $data['created_at'] = $time;
         $data['updated_at'] = $time;
-
         $file = $r['fileInput'];
         $fileName = rand(0,999) . '.' . $file->getClientOriginalExtension();
         $data['images'] = $fileName;
-
         $product = $this->productRepository->create($data);
         $productID = $product->id;
-
         $file->move(public_path('uploads/products/' . $productID), $fileName);
-
         return $product;
     }
 
@@ -52,13 +49,10 @@ class ProductService
     }
 
 
-    public function updateProduct($r, $id){
+    public function updateProduct($id, $r){
         $product = $this->productRepository->find($id);
         $productID = $product->id;
-
         if ($product){
-            
-
             $time = time();
             $data['name'] = $r['update_name'];
             $data['id_category'] = $r['update_category'];
@@ -121,7 +115,7 @@ class ProductService
                 }
             }
 
-            return $this->productRepository->update($data, $id);
+            return $this->productRepository->update($id, $data);
         }
     }
 

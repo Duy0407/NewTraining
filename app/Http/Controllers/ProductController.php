@@ -30,15 +30,11 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-
         $categoryId = intval($request['category']);
-        
         $manufacturerId = $request['manufacturer'];
-
         $categories = $this->cateService->getAllCategory();
         $facturers = $this->facturerServices->getAllFacturer();
         $products = $this->productService->getAllProduct($keyword, $categoryId, $manufacturerId);
-
         return view('manager', compact('categories','facturers','products'));
     }
 
@@ -108,7 +104,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, $id)
     {
-        $this->productService->updateProduct($request->all(), $id);
+        $this->productService->updateProduct($id, $request->all());
         return redirect()->route('product.index')->with('success', 'Sản phẩm đã được cập nhật thành công!');
     }
 

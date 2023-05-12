@@ -4,13 +4,13 @@ namespace App\Interfaces;
 
 interface ProductInterface
 {
-    public function getAll($search, $categoryId, $manufacturerId);
+    public function all();
 
     public function find($id);
 
-    public function create($data);
+    public function create(array $data);
 
-    public function update($data, $id);
+    public function update($id, array $data);
 
     public function delete($id);
 
@@ -19,7 +19,7 @@ interface ProductInterface
 
     // Thêm ảnh slide
     public function addImgSliderProduct($data);
-    
+
     // Lấy tất cả ảnh slide trong update
     public function getAllImgSlider($productID);
 

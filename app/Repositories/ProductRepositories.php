@@ -5,21 +5,21 @@ use App\Models\Product;
 use App\Interfaces\ProductInterface;
 use App\Models\ImgSliderProduct;
 
-class ProductRepositories implements ProductInterface
+class ProductRepositories extends BaseRepository implements ProductInterface
 {
     protected $productModel;
     protected $imgSliderModel;
 
     public function __construct(Product $productModel, ImgSliderProduct $imgSliderModel)
     {
-        $this->productModel = $productModel;
+        $this->model = $productModel;
         $this->imgSliderModel = $imgSliderModel;
 
     }
 
     public function getAll($search, $categoryId, $manufacturerId)
-    {   
-        $product = $this->productModel;
+    {
+        $product = $this->model->newModelQuery();
         if ($search) {
             $product = $product->where('name', 'like', '%'.$search.'%');
         }
@@ -33,20 +33,10 @@ class ProductRepositories implements ProductInterface
         return $product->orderByDesc('updated_at')->paginate(12);
     }
 
-    public function find($id)
-    {
-        return Product::find($id);
-    }
-
-    public function create($data)
-    {
-        return Product::create($data);
-    }
-
-    public function update($data, $id)
-    {
-        return $this->productModel->where('id', $id)->update($data);
-    }
+//    public function update($data, $id)
+//    {
+//        return $this->productModel->where('id', $id)->update($data);
+//    }
 
     public function delete($id)
     {
